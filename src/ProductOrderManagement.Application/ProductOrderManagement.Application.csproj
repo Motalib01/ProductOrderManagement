@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.5.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ProductOrderManagement.Domain\ProductOrderManagement.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Orders\DTOs\" />
+    <Folder Include="Orders\Queries\GetOrderById\" />
+    <Folder Include="Products\DTOs\" />
+    <Folder Include="Products\Queries\GetProducts\" />
+    <Folder Include="Products\Queries\GetProductById\" />
+  </ItemGroup>
+
+</Project>
