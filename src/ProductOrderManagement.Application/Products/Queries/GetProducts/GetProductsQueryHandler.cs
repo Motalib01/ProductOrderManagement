@@ -6,19 +6,16 @@ using ProductOrderManagement.Domain.Product;
 
 namespace ProductOrderManagement.Application.Products.Queries.GetProducts;
 
-public record GetProductsQuery(int Page = 1, int PageSize = 10) : IQuery<PaginatedList<ProductDto>>, IQuery<Result<PaginatedList<ProductDto>>>;
-
-
-internal sealed class GetProductsQueryHandler : IQueryHandler<GetProductsQuery, Result<PaginatedList<ProductDto>>>
+internal sealed class GetProductsQueryHandler : IQueryHandler<GetProductsQuery, PaginatedList<ProductDto>>
 {
     private readonly IProductRepository _productRepository;
 
     public GetProductsQueryHandler(IProductRepository productRepository)
     {
-        _productRepository = productRepository; 
+        _productRepository = productRepository;
     }
 
-    public async Task<Result<Result<PaginatedList<ProductDto>>>> Handle(GetProductsQuery query, CancellationToken cancellationToken)
+    public async Task<Result<PaginatedList<ProductDto>>> Handle(GetProductsQuery query, CancellationToken cancellationToken)
     {
         var products = await _productRepository.GetPaginatedAsync(query.Page, query.PageSize, cancellationToken);
 

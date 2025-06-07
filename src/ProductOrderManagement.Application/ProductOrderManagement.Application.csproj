@@ -16,10 +16,7 @@
 
   <ItemGroup>
     <Folder Include="Orders\DTOs\" />
-    <Folder Include="Orders\Queries\GetOrderById\" />
     <Folder Include="Products\DTOs\" />
-    <Folder Include="Products\Queries\GetProducts\" />
-    <Folder Include="Products\Queries\GetProductById\" />
   </ItemGroup>
 
 </Project>
