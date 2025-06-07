@@ -1,55 +1,94 @@
-# ProductOrderManagement
+# Product & Order Management API
 
-## Table of Contents
-
-- [Project Overview](#project-overview)  
-- [Technologies Used](#technologies-used)  
-- [Project Structure](#project-structure)  
-- [Setup Instructions](#setup-instructions)  
-- [API Endpoints](#api-endpoints)  
-- [Assumptions & Decisions](#assumptions--decisions)  
-- [Future Enhancements](#future-enhancements)  
-- [Contact](#contact)  
+A simple API for managing products and customer orders using **.NET 8**, **Minimal APIs**, and **CQRS with MediatR**.
 
 ---
 
-## Project Overview
+## Features
 
-This project implements a product order management system designed with the following key concepts:
-
-- **CQRS Pattern**: Separation of commands (writes) and queries (reads) using MediatR.
-- **Domain-Driven Design (DDD)**: Clear separation between Domain, Application, and Presentation layers.
-- **Result Pattern**: Functional approach to error handling using `Result<T>` wrapping success/failure.
-- **Pagination** support on query results.
-- **Minimal API** endpoints for lightweight, fast REST API.
-
----
-
-## Technologies Used
-
-- **.NET 9** — Modern, cross-platform framework for building APIs.
-- **MediatR** — In-process messaging to implement CQRS pattern.
-- **ASP.NET Core Minimal APIs** — Lightweight API endpoints without full MVC overhead.
-- **Dependency Injection** — For loose coupling and testability.
-- **Domain-Driven Design (DDD)** — Organizes business logic cleanly.
-- **Async/Await & CancellationTokens** — For scalable, responsive async programming.
-
----
-
-## Project Structure
-
-| Layer        | Responsibility                                               | Example Types                         |
-|--------------|--------------------------------------------------------------|-------------------------------------|
-| Domain       | Core business logic, entities, value objects, domain services | `Order`, `Product`, `PricingService` |
-| Application  | Commands, Queries, Handlers, DTOs, application services       | `PlaceOrderCommand`, `GetOrdersQuery`, `OrderDto` |
-| Presentation | REST API endpoints                                            | Minimal API endpoints under `/api/orders` |
+-  Manage **Products**  
+-  Manage **Orders**  
+-  CQRS Pattern using **MediatR**  
+-  Clean Architecture structure  
+-  Minimal APIs (no controllers)  
+-  Swagger UI for easy testing  
 
 ---
 
 ## Setup Instructions
 
-1. **Clone the repository**
+### 1️⃣ Prerequisites
+
+- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)  
+- InMimory  
+- IDE: Visual Studio 2022 
+
+---
+
+### 2️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/Motalib01/ProductOrderManagement.git
+git clone https://github.com/yourusername/ProductOrderManagement.git
 cd ProductOrderManagement
+```
+## Open Swagger UI
+
+Navigate to:  
+`https://localhost:5001/swagger` or `http://localhost:5000/swagger`
+
+You can test all endpoints from Swagger UI.
+
+---
+
+## Project Structure
+/ProductOrderManagement.Application --> Application Layer (CQRS Handlers, Commands, Queries)  
+/ProductOrderManagement.Domain --> Domain Entities (Product, Order, etc.)  
+/ProductOrderManagement.Infrastructure --> Infrastructure (EF Core, DbContext, Repositories)  
+/ProductOrderManagement.Presentation --> Presentation Layer (Minimal API Endpoints)  
+/ProductOrderManagement.sln --> Solution file  
+
+---
+
+## Endpoints
+
+### Products
+
+- `POST /api/products` → Create product  
+- `PUT /api/products/{id}/status` → Update product status  
+- `GET /api/products` → Get paginated products  
+- `GET /api/products/{id}` → Get product by ID  
+
+### Orders
+
+- `POST /api/orders` → Place order  
+- `GET /api/orders` → Get paginated orders  
+- `GET /api/orders/{id}` → Get order by ID  
+
+---
+
+## Assumptions & Decisions
+
+- Used **CQRS** pattern with **MediatR** to separate commands and queries cleanly.  
+- Used **Minimal APIs** instead of controllers for lightweight, modern API design.  
+- Commands and queries are dispatched through MediatR.  
+- EF Core used for data access with a DbContext initialized at startup.  
+- No authentication or authorization included to keep it simple.  
+- Database is auto-created and seeded on startup using a DbInitializer.
+
+---
+
+## Future Improvements (Optional)
+
+- Add **Authentication & Authorization**  
+- Add **Unit Tests & Integration Tests**  
+- Add **Validation** with FluentValidation  
+- Add **Logging**  
+- Add **Dockerfile** to containerize the app  
+
+---
+
+## Author
+
+**Abd El-Motalib Chemouri**  
+[abdelmotaliv.chemouri@gmail.com](mailto:abdelmotaliv.chemouri@gmail.com)
+
