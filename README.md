@@ -28,7 +28,7 @@ A simple API for managing products and customer orders using **.NET 8**, **Minim
 ### 2️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/yourusername/ProductOrderManagement.git
+git clone https://github.com/Motalib01/ProductOrderManagement.git
 cd ProductOrderManagement
 ```
 ## Open Swagger UI
@@ -74,16 +74,6 @@ You can test all endpoints from Swagger UI.
 - EF Core used for data access with a DbContext initialized at startup.  
 - No authentication or authorization included to keep it simple.  
 - Database is auto-created and seeded on startup using a DbInitializer.
-
----
-
-## Future Improvements (Optional)
-
-- Add **Authentication & Authorization**  
-- Add **Unit Tests & Integration Tests**  
-- Add **Validation** with FluentValidation  
-- Add **Logging**  
-- Add **Dockerfile** to containerize the app  
 
 ---
 
